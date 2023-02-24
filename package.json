@@ -18,8 +18,16 @@
     "vite-plugin-import"
   ],
   "sideEffects": false,
+  "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "exports":{
+    ".":{
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    }
+  },
   "files": [
     "dist"
   ],
@@ -33,6 +41,9 @@
     "test": "vitest",
     "typecheck": "tsc --noEmit"
   },
+  "peerDependencies": {
+    "vite": "^4.1.0"
+  },
   "devDependencies": {
     "@populatus/eslint-config": "^1.1.0",
     "@types/node": "^18.7.18",
@@ -44,7 +55,6 @@
     "unbuild": "^0.8.11"
   },
   "dependencies": {
-    "vite": "^4.1.0",
     "@types/fs-extra": "^11.0.1",
     "fs-extra": "^11.1.0",
     "magic-string": "^0.29.0"
